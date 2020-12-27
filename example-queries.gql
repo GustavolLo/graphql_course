@@ -1,0 +1,40 @@
+query GetUserInfo {
+  user(key: "4242") {
+    id
+    firstName
+    lastName
+    fullName
+    contestsCount
+    namesCount
+    votesCount
+    email
+    contests {
+      title
+      names {
+        label
+        totalVotes {
+          up
+          down
+        }
+      }
+    }
+  }
+}
+
+mutation AddNewContest($input: ContestInputType!) {
+  AddContest(input: $input) {
+    id
+    code
+    title
+    description
+    status
+  }
+}
+# QUERY VARIABLES
+# {
+#   "input": {
+#     "apiKey": "0000",
+#     "title": "Course about GraphQL",
+#     "description": "An advanced course about GraphQL"
+#   }
+# }
