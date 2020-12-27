@@ -21,6 +21,24 @@ query GetUserInfo {
   }
 }
 
+query GetUserInfo2 {
+  user(key: "4242") {
+    id
+    firstName
+    lastName
+    activities {
+      ... on ContestType {
+        title
+        contestCreatedAt: createdAt
+      }
+      ... on NameType {
+        label
+        nameCreatedAt: createdAt
+      }
+    }
+  }
+}
+
 mutation AddNewContest($input: ContestInputType!) {
   AddContest(input: $input) {
     id
